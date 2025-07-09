@@ -1,7 +1,7 @@
 #import "template/main.typ": *
 
 #show: template.with(
-  title: "Eigendecomposition and Power Iteration",
+  title: [Eigendecomposition and Power~Iteration],
   author: "Giap Bui-Huy",
   toc: true,
 )
