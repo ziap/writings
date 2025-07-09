@@ -5,7 +5,7 @@
   affiliation: none,
   other: none,
   toc: false,
-  date: datetime.today().display("[month repr:long] [day], [year]"),
+  date: datetime.today(),
   logo: none,
   main-color: "1aa8f4",
   alpha: 60%,
@@ -60,7 +60,7 @@
     align(center, text(font: title-font, 2em, weight: 700, subtitle))
     v(2em, weak: true)
   }
-  align(center, text(1.1em, date))
+  align(center, text(1.1em, date.display("[month repr:long] [day], [year]")))
 
   v(2fr)
 
