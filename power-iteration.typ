@@ -3,7 +3,6 @@
 #show: template.with(
   title: "Eigendecomposition and Power Iteration",
   author: "Giap Bui-Huy",
-  main-color: "1aa8f4",
   toc: true,
 )
 

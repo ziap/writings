@@ -1,3 +1,9 @@
-#/bin/sh
+#/bin/sh -e
 
-typst compile --font-path template/fonts/ *.typ
+for file in *.typ; do
+  base=$(basename -s .typ $file)
+  out_pdf="out/$base.pdf"
+
+  echo "Compiling $file -> $out_pdf"
+  typst compile --font-path template/fonts/ "$file" "$out_pdf"
+done

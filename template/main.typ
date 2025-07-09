@@ -7,7 +7,7 @@
   toc: false,
   date: datetime.today().display("[month repr:long] [day], [year]"),
   logo: none,
-  main-color: "E94845",
+  main-color: "1aa8f4",
   alpha: 60%,
   color-words: (),
   body,
