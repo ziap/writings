@@ -24,8 +24,8 @@ bold(D) = mat(
 $
 
 The diagonal entries $lambda_1, lambda_2, ..., lambda_n$ of $bold(D)$ are
-called the eigenvalues of $bold(D)$. An eigenvector $bold(v)_i$ and its corresponding
-eigenvalue $lambda_i$ is connected through the following formula:
+called the eigenvalues of $bold(D)$. An eigenvector $bold(v)_i$ and its
+corresponding eigenvalue $lambda_i$ is connected through the following formula:
 
 $
 bold(A) bold(v)_i = lambda_i bold(v)_i
