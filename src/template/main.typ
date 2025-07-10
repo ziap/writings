@@ -7,7 +7,7 @@
   toc: false,
   date: datetime.today(),
   logo: none,
-  main-color: "1aa8f4",
+  main-color: rgb("1aa8f4"),
   body,
 ) = {
   set document(author: author, title: title)
@@ -15,10 +15,15 @@
   let body-font = "Source Sans 3"
   let title-font = "Merriweather Sans"
 
-  let primary-color = rgb(main-color)
+  let primary-color = oklab(main-color)
   let secondary-color = color.mix(color.luma(255, 40%), primary-color)
-  let background-color = primary-color.darken(85%)
-  let foreground-color = primary-color.lighten(85%)
+  let background-color = primary-color.darken(100%)
+
+  // Manually desaturate because Typst convert colors to HSV before desaturating
+  let foreground-color = color.mix(
+    (primary-color.lighten(100%), 20%),
+    (white, 80%),
+  )
 
   set figure.caption(separator: [ --- ], position: top)
   set raw(theme: "./highlight.tmTheme")
