@@ -8,8 +8,6 @@
   date: datetime.today(),
   logo: none,
   main-color: "1aa8f4",
-  alpha: 60%,
-  color-words: (),
   body,
 ) = {
   set document(author: author, title: title)
@@ -18,12 +16,21 @@
   let title-font = "Merriweather Sans"
 
   let primary-color = rgb(main-color)
-  let secondary-color = color.mix(color.rgb(100%, 100%, 100%, alpha), primary-color, space:rgb)
+  let secondary-color = color.mix(color.luma(255, 40%), primary-color)
+  let background-color = primary-color.darken(85%)
+  let foreground-color = primary-color.lighten(85%)
 
   set figure.caption(separator: [ --- ], position: top)
-  show raw.where(block: false) : it => h(0.5em) + box(fill: primary-color.lighten(90%), outset: 0.2em, it) + h(0.5em)
+  set raw(theme: "./highlight.tmTheme")
 
-  set text(font: body-font, 12pt)
+  set page(
+    paper: "a4",
+    fill: background-color,
+  )
+  set text(
+    font: body-font, 12pt,
+    fill: foreground-color,
+  )
 
   show heading: set text(font: title-font, fill: primary-color)
   show heading: it => it + v(0.5em)
@@ -41,9 +48,6 @@
   set enum(indent: 1em, numbering: n => [#text(fill: primary-color, numbering("1.", n))])
   set list(indent: 1em, marker: n => [#text(fill: primary-color, "•")])
 
-  // Title page.
-
-  // Logo at top right if given
   if logo != none {
     set image(width: 6cm)
     place(top + right, logo)
@@ -82,10 +86,9 @@
   pagebreak()
 
   set page(
-    paper: "a4",
     numbering: "1 / 1", 
     number-align: center, 
-    header: [#emph()[#title #h(1fr) #author]]
+    header: [#emph()[#title #h(1fr) #author]],
   )
 
   counter(page).update(1)

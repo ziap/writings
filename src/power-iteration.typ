@@ -233,7 +233,7 @@ $abs(lambda_1) >= abs(lambda_2) >= ... >= abs(lambda_n)$, we'll have to show
 that if $display(lim_(k -> oo) bold(b)_k = bold(v))$, then $bold(A) bold(v) =
 lambda_1 bold(v)$. For that, let's take a better look at the recurrence.
 Similar with the Fibonacci example, we can try to factor it into a matrix power
-expression like we did in #ref(<fib-power>).
+expression like we did in @fib-power.
 
 $
 bold(b)_(k + 1)
@@ -391,11 +391,11 @@ Which is exactly the top eigenvector, and the algorithm doesn't depend on the
 initial choice $bold(b)_0$. Otherwise, the direction of $bold(b)_0$ will affect
 both the speed and result. If $bold(b)_0$ is selected such that
 $accent(bold(b), tilde)_i = 0$ for all $i$ such that $abs(lambda_i) =
-abs(lambda_1)$, the #ref(<limit>) is no longer true and the algorithm can only
-converge to a smaller eigenvector. We also shown via #ref(<power-factor>) that
-this algorithm is just computing a really large matrix power, and the
-recurrence relation described in #ref(<power-recurrence>) is just a method for
-doing it while avoiding overflow.
+abs(lambda_1)$, the @limit is no longer true and the algorithm can only
+converge to a smaller eigenvector. We also shown via @power-factor that this
+algorithm is just computing a really large matrix power, and the recurrence
+relation described in @power-recurrence is just a method for doing it while
+avoiding overflow.
 
 While the Power Iteration method is a simple algorithm with an interesting
 connection to matrix power, its efficiency and utility are leave much to be
@@ -418,9 +418,8 @@ $
 bold(b) mu = bold(A) bold(b)
 $ <eigval-eqn>
 
-If $bold(b)$ haven't converged to $bold(v)$, #ref(<eigval-eqn>) has no
-solution, but we convert it into a least squares problem and minimize the
-residual:
+If $bold(b)$ haven't converged to $bold(v)$, @eigval-eqn has no solution, but
+we convert it into a least squares problem and minimize the residual:
 
 $
 (accent(bold(b), hat), accent(mu, hat)) = arg min_(bold(b), mu) norm(bold(b) mu - bold(A) bold(b))_2^2
@@ -438,7 +437,7 @@ $ <rayleigh-quotient>
 This is call the Rayleigh quotient of the vector $bold(b)$, or the best
 approximation of the eigenvalue given an eigenvector approximation $bold(b)$.
 We will come back to this later, but currently our objective is to find a
-stopping condition. For this, we can use the error of #ref(<eigval-eqn>).
+stopping condition. For this, we can use the error of @eigval-eqn.
 
 $
 norm(bold(b) mu - bold(A) bold(b))_2^2
@@ -474,7 +473,7 @@ accurate results is more important. In practice, you might want to throw an
 error after a fixed number of iterations if it haven't converged. The choice of
 the tolerance is also interesting I wont go into details here. More
 importantly, we can also extend the algorithm to get the largest eigenvalue
-using the Rayleigh quotient described in #ref(<rayleigh-quotient>).
+using the Rayleigh quotient described in @rayleigh-quotient.
 
 = Rayleigh quotient Iteration
 
@@ -657,7 +656,7 @@ norm(bold(A))_F
   = sqrt(lambda_1^2 + lambda_2^2 + ... + lambda_n^2)
 $
 
-Evaluating the limit similar to #ref(<power-proof>) gives us:
+Evaluating the limit similar to @power-proof gives us:
 
 $
 lim_(k -> oo) bold(A)^k
@@ -783,7 +782,7 @@ it so fast that you don't need a stopping condition.
 
 == Exponentiation by squaring
 
-Back in #ref(<practical-consideration>), I mentioned how to compute $A^k$, we
+Back in @practical-consideration, I mentioned how to compute $A^k$, we
 can use a method called exponentation by squaring, and `np.linalg.matrix_power`
 implements it. It turns out that you can easily use it decrease the number of
 iterations. We can rewrite the iteration step:
