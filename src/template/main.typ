@@ -27,6 +27,7 @@
 
   set figure.caption(separator: [ --- ], position: top)
   set raw(theme: "./highlight.tmTheme")
+  show raw: set text(font: "Source Code Pro")
 
   set page(
     paper: "a4",
