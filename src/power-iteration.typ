@@ -764,7 +764,7 @@ def matrix_power_iteration(A: NPMat, n_iter: int) -> NPVec:
   n, m = A.shape
   assert m == n, f"A ({m}×{n}) is non-square"
 
-  norm2 = (A*A).sum()
+  norm2 = (A * A).sum()
   if norm2 < np.finfo(A.dtype).eps:
     v = np.zeros_like(A[0])
     v[0] = 1
@@ -812,7 +812,7 @@ def squaring_power_iteration(A: NPMat) -> NPVec:
   n, m = A.shape
   assert m == n, f"A ({m}×{n}) is non-square"
 
-  norm2 = (A*A).sum()
+  norm2 = (A * A).sum()
   if norm2 < np.finfo(A.dtype).eps:
     v = np.zeros_like(A[0])
     v[0] = 1
