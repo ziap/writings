@@ -1,6 +1,8 @@
 #!/usr/bin/env nu
 
 def main [] {
+  hide-env SOURCE_DATE_EPOCH
+
   ls src/*.typ | each { |file|
     let base = $file.name | path parse
     let out_pdf = $"out/($base.stem).pdf"
