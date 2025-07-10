@@ -3,6 +3,11 @@
 #show: template.with(
   title: [Eigendecomposition and Power~Iteration],
   author: "Giap Bui-Huy",
+  date: datetime(
+    year: 2025,
+    month: 7,
+    day: 9,
+  ),
   toc: true,
 )
 
