@@ -14,6 +14,10 @@ def "main watch" [
   let pid = job spawn { start $out_pdf }
   do --ignore-errors {
     typst watch --font-path src/template/fonts/ $filename $out_pdf
+  }
+
+  # Only kill the pdf viewer if the user haven't done it
+  if $pid in (job list | get id) {
     job kill $pid
   }
 }
