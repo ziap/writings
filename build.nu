@@ -14,9 +14,8 @@ def "main watch" [
   let pid = job spawn { start $out_pdf }
   do --ignore-errors {
     typst watch --font-path src/template/fonts/ $filename $out_pdf
+    job kill $pid
   }
-
-  job kill $pid
 }
 
 # Build all typst files in 'src/' to their corresponding pdf files in 'out/'
