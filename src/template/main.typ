@@ -13,21 +13,23 @@
   set document(author: author, title: title)
 
   let body-font = "Source Sans 3"
+  let mono-font = "Source Code Pro"
   let title-font = "Merriweather Sans"
 
+  // Convert to OKLAB for perceptual manipulation
   let primary-color = oklab(main-color)
   let secondary-color = color.mix(color.luma(255, 40%), primary-color)
   let background-color = primary-color.darken(100%)
 
   // Manually desaturate because Typst convert colors to HSV before desaturating
   let foreground-color = color.mix(
-    (primary-color.lighten(100%), 20%),
-    (white, 80%),
+    (primary-color.lighten(100%), 40%),
+    (white, 60%),
   )
 
   set figure.caption(separator: [ --- ], position: top)
   set raw(theme: "./highlight.tmTheme")
-  show raw: set text(font: "Source Code Pro")
+  show raw: set text(font: mono-font)
 
   set page(
     paper: "a4",

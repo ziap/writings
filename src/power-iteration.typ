@@ -392,15 +392,14 @@ lim_(k -> oo) (bold(A)^k bold(b))/norm(bold(A)^k bold(b))_2
   = bold(v)_1/norm(bold(v)_1)_2
 $
 
-Which is exactly the top eigenvector, and the algorithm doesn't depend on the
-initial choice $bold(b)_0$. Otherwise, the direction of $bold(b)_0$ will affect
-both the speed and result. If $bold(b)_0$ is selected such that
-$accent(bold(b), tilde)_i = 0$ for all $i$ such that $abs(lambda_i) =
-abs(lambda_1)$, the @limit is no longer true and the algorithm can only
-converge to a smaller eigenvector. We also shown via @power-factor that this
-algorithm is just computing a really large matrix power, and the recurrence
-relation described in @power-recurrence is just a method for doing it while
-avoiding overflow.
+And the result doesn't depend on the initial choice $bold(b)_0$. Otherwise, the
+direction of $bold(b)_0$ will affect both the speed and result. If $bold(b)_0$
+is selected such that $accent(bold(b), tilde)_i = 0$ for all $i$ such that
+$abs(lambda_i) = abs(lambda_1)$, the @limit is no longer true and the algorithm
+can only converge to a smaller eigenvector. We also shown via @power-factor
+that this algorithm is just computing a really large matrix power, and the
+recurrence relation described in @power-recurrence is just a method for doing
+it while avoiding overflow.
 
 While the Power Iteration method is a simple algorithm with an interesting
 connection to matrix power, its efficiency and utility are leave much to be
@@ -409,15 +408,15 @@ to generalize them to get more eigenvectors or even the full decomposition.
 
 == Stopping condition and eigenvalue
 
-Since the algorithm is just evaluating a limit as $k$ grows to indefinitely, to
+Since the algorithm is just evaluating a limit as $k$ grows indefinitely, to
 implement we just have to pick a large enough $k$, which is the `n_iter`
 parameter of the example implementation. But how large is "large enough"? The
-convergence rate depends on the converge rate of $abs(lambda_i/lambda_1)^k$, which
-is not constant among all matrices. So if we use a fixed number of iterations,
-we'll get unreliable precision. To determine when to safely stop the algorithm,
-we can use the eigenvalue equation $bold(A)bold(v) = lambda bold(v)$, but
-replace $bold(v)$ and $lambda$ with the approximation $bold(b)$ and $mu$.
-Rearranging, we get:
+convergence rate depends on the converge rate of $abs(lambda_i/lambda_1)^k$,
+which is not constant among all matrices. So if we use a fixed number of
+iterations, we'll get unreliable precision. To determine when to safely stop
+the algorithm, we can use the eigenvalue equation $bold(A)bold(v) = lambda
+bold(v)$, but replace $bold(v)$ and $lambda$ with the approximation $bold(b)$
+and $mu$. Rearranging, we get:
 
 $
 bold(b) mu = bold(A) bold(b)
@@ -427,7 +426,8 @@ If $bold(b)$ haven't converged to $bold(v)$, @eigval-eqn has no solution, but
 we convert it into a least squares problem and minimize the residual:
 
 $
-(accent(bold(b), hat), accent(mu, hat)) = arg min_(bold(b), mu) norm(bold(b) mu - bold(A) bold(b))_2^2
+(accent(bold(b), hat), accent(mu, hat))
+  = arg min_(bold(b), mu) norm(bold(b) mu - bold(A) bold(b))_2^2
 $ <eigval-lstqr>
 
 $bold(b)$ is already optimized by Power Iteration, so if we fix $bold(b)$ and
